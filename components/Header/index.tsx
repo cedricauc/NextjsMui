@@ -60,7 +60,7 @@ const StyledImage = styled(Image)(({theme}) => ({
 }));
 
 
-function Header() {
+function HeaderComponent() {
     //react useState hook pour l'état ouverture/fermeture
     const [open, setState] = React.useState(null);
 
@@ -166,4 +166,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default HeaderComponent;
