@@ -109,7 +109,7 @@ const RegisterForm = () => {
                 />
                 <Box sx={{display: 'flex', pb: "12rem"}}>
                     <Button type="submit" variant="contained" color="primary" size="small"
-                            sx={{mt: 8, borderRadius: 0}}>
+                            sx={{mt: 8, p:1.5, lineHeight:1, borderRadius: 0}}>
                         Créer un compte
                     </Button>
                 </Box>

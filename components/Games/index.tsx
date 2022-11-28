@@ -1,8 +1,10 @@
 import * as React from "react";
-import {useRef, useState} from "react";
-import {useForm, Controller} from 'react-hook-form'
+import {useEffect, useRef, useState} from "react";
+import {useForm, Controller} from 'react-hook-form';
 import {gameList} from "../../datas/gameList";
 import usePagination from "./pagination";
+import {useRouter} from 'next/router';
+import Image from "next/image";
 import {
     Box,
     CardMedia,
@@ -16,11 +18,12 @@ import {
     CardActionArea, CardContent, TextField
 } from "@mui/material";
 import darkForest from "../../assets/img/dark-forest.png";
-import Image from "next/image";
+import search from "../../assets/icons/search.svg";
 import logo from "../../assets/img/spiderwolf-logo-02.png";
-import styles from '../../styles/Pagination.module.scss'
+import styles from '../../styles/Pagination.module.scss';
 
 function GamesComponent() {
+    const router = useRouter();
     const {control} = useForm()
 
     let [page, setPage] = useState(1)
@@ -64,6 +67,10 @@ function GamesComponent() {
         _DATA.setData(data)
     }
 
+    const handleCardClick = (id: any) => {
+        router.push('/games/' + id).then()
+    }
+
     return (
         <Box component="main" position="static">
             <Box
@@ -104,6 +111,14 @@ function GamesComponent() {
                                         size="large"
                                         variant="filled"
                                         className={styles.search__input}
+                                        sx={[
+                                            {
+                                                '&>div>input': {
+                                                    backgroundImage: `url(${search.src})`,
+                                                    backgroundRepeat: `no-repeat`,
+                                                }
+                                            }
+                                        ]}
                                     />
                                 )}
                             />
@@ -115,11 +130,11 @@ function GamesComponent() {
                                         <ListItem key={v.id} sx={{my: 5}}>
                                             <Card>
                                                 <CardActionArea
+                                                    onClick={() => handleCardClick(v.id)}
                                                     sx={{
                                                         display: 'flex',
                                                         backgroundColor: 'light.main',
-                                                    }}
-                                                >
+                                                    }}>
                                                     <CardMedia
                                                         component="img"
                                                         height="200"
@@ -134,8 +149,7 @@ function GamesComponent() {
                                                                 color: 'primary.main',
                                                                 float: 'left',
                                                                 marginLeft: 5,
-                                                            }}
-                                                        >
+                                                            }}>
                                                             {v.description}
                                                         </Typography>
                                                     </CardContent>

@@ -82,7 +82,7 @@ const LoginForm = () => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    sx={{mt: 8, ml: 'auto', borderRadius: 0}}
+                    sx={{mt: 8, ml: 'auto', p:1.5, lineHeight:1, borderRadius: 0}}
                 >
                     Se connecter
                 </Button>

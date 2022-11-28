@@ -83,13 +83,8 @@ function HeaderComponent() {
         <AppBar position='static' sx={{margin: 0, backgroundColor: 'primary.main'}}>
             <Container maxWidth='xl' disableGutters>
                 <Toolbar>
-
-                    <Link href="/" scroll={false} passHref>
-                        <StyledImage src={logo.src} alt="Spiderwolf" />
-                    </Link>
-
+                    <StyledImage src={logo.src} alt="Spiderwolf" />
                     <Navbar/>
-
                     <StyledIconButton
                         edge='start'
                         color='inherit'
