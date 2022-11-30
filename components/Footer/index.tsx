@@ -21,28 +21,35 @@ const StyledBox = styled(Box)(({theme}) => ({
 }))
 
 const StyledImage = styled(Image)(({theme}) => ({
-    position: 'absolute',
+    zIndex: 1000,
     [theme.breakpoints.down('md')]: {
-        width: 300,
-        position: 'static',
+        position: 'static !important',
+        width: 'auto !important',
+        height: '313px !important',
     },
     [theme.breakpoints.up('md')]: {
-        marginRight: 80,
-        marginTop: '-100px',
-        width: 500,
-        right: 0,
+        position: 'absolute !important',
+        marginRight: '50px !important',
+        marginTop: '-100px !important',
+        width: 'auto !important',
+        height: '313px !important',
+        right: '0px !important',
     },
     [theme.breakpoints.up('lg')]: {
-        marginRight: 90,
-        marginTop: '-200px',
-        width: 600,
-        right: 0,
+        position: 'absolute !important',
+        marginRight: '100px !important',
+        marginTop: '-200px !important',
+        width: 'auto !important',
+        height: '413px !important',
+        right: '0px !important',
     },
     [theme.breakpoints.up('xl')]: {
-        marginRight: 100,
-        marginTop: '-300px',
-        width: 700,
-        right: 0,
+        position: 'absolute !important',
+        marginRight: '200px !important',
+        marginTop: '-300px !important',
+        width: 'auto !important',
+        height: '513px !important',
+        right: '0px !important',
     },
 }))
 
@@ -103,7 +110,11 @@ function FooterComponent() {
                     <Grid item sm={12} md={9}>
                         <Box sx={{display: 'flex'}}>
                             <Link href="/" scroll={true} passHref>
-                                <StyledImage src={logo.src} alt="Spiderwolf"/>
+                                <StyledImage 
+                                    src={logo.src}
+                                    alt="Spiderwolf"
+                                    width={885}
+                                    height={770} />
                             </Link>
                         </Box>
                     </Grid>

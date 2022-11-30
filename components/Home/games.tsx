@@ -27,11 +27,17 @@ const StyledBox = styled(Box)(({theme}) => ({
     textAlign: 'center',
 }))
 
-const StyledImage = styled(Image)(({}) => ({
-    display: 'block',
-    width: '100%',
-    objectFit: 'cover',
-    height: '200px'
+const StyledImage = styled(Image)(({theme}) => ({
+    display: 'block !important',
+    width: '100% !important',
+    [theme.breakpoints.down('md')]: {
+        position: 'static !important',
+        height: '100px !important',
+    },
+    [theme.breakpoints.up('md')]: {
+        position: 'static !important',
+        height: '200px !important',
+    }
 }))
 
 function Games() {
@@ -56,16 +62,16 @@ function Games() {
                                 onClick={() => router.push(`/games/${v.id}`)}
                             >
                                 <Box component="div" style={{objectFit: 'fill'}}>
-                                    <StyledImage
-                                        alt={v.title}
-                                        src={v.image.src}
-                                    />
+                                <StyledImage
+                                    src={v.image.src}
+                                    alt={v.title}
+                                    width={400}
+                                    height={400} />
                                 </Box>
                                 <CardContent>
                                     <Typography
                                         variant="body2"
-                                        sx={{color: 'primary.main', textAlign: 'center'}}
-                                    >
+                                        sx={{color: 'primary.main', textAlign: 'center'}}>
                                         {v.short_description}
                                     </Typography>
                                 </CardContent>

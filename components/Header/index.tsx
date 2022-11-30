@@ -39,23 +39,27 @@ const StyledBox = styled(Box)(({theme}) => ({
 }));
 
 const StyledImage = styled(Image)(({theme}) => ({
-    position: 'absolute',
     zIndex: 1000,
+    width: 'auto !important',
     [theme.breakpoints.up('xs')]: {
-        height: 225,
-        top: -22,
+        position: 'absolute !important',
+        height: '150px !important',
+        top: '0px !important',
     },
     [theme.breakpoints.up('sm')]: {
-        height: 250,
-        top: -22,
+        position: 'absolute !important',
+        height: '200px !important',
+        top: '0px !important',
     },
     [theme.breakpoints.up('md')]: {
-        height: 300,
-        top: -26,
+        position: 'absolute !important',
+        height: '250px !important',
+        top: '0px !important',
     },
     [theme.breakpoints.up('lg')]: {
-        height: 400,
-        top: -34,
+        position: 'absolute !important',
+        height: '350px !important',
+        top: '0px !important',
     },
 }));
 
@@ -76,6 +80,7 @@ function HeaderComponent() {
 
     // fonction quand la navigation est active
     const isActive = (path: any) => {
+        console.log(router.asPath === path)
         return router.asPath === path ? 'active' : '';
     };
 
@@ -83,7 +88,11 @@ function HeaderComponent() {
         <AppBar position='static' sx={{margin: 0, backgroundColor: 'primary.main'}}>
             <Container maxWidth='xl' disableGutters>
                 <Toolbar>
-                    <StyledImage src={logo.src} alt="Spiderwolf" />
+                    <StyledImage
+                        src={logo.src}
+                        alt="Spiderwolf"
+                        width={925}
+                        height={1396} />
                     <Navbar/>
                     <StyledIconButton
                         edge='start'
@@ -134,6 +143,7 @@ function HeaderComponent() {
                                     <Button
                                         id='login-button'
                                         variant='contained'
+                                        className={isActive('/login')}
                                         sx={{
                                             m: 1,
                                             flex: 1,
@@ -144,7 +154,7 @@ function HeaderComponent() {
                                                 color: 'light.main',
                                             },
                                             '&.active': {
-                                                backgroundColor: 'primary.main',
+                                                backgroundColor: 'secondary.main',
                                                 color: 'light.main',
                                             }
                                         }}

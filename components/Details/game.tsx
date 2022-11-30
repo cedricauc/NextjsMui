@@ -1,5 +1,15 @@
 import * as React from 'react';
 import { Box, Button, Link, Grid, Stack, Typography } from '@mui/material'
+import {styled} from "@mui/material/styles";
+import Image from "next/image";
+
+const StyledImage = styled(Image)(({theme}) => ({
+    [theme.breakpoints.up('xs')]: {
+        position: 'static !important',
+        width: '100% !important',
+        height: '100% !important'
+    }
+}));
 
 export default function Game({ game, ...props }: any) {
     return (
@@ -18,7 +28,12 @@ export default function Game({ game, ...props }: any) {
                 }}
             >
                 <Grid item xs={4} sx={{ mx: { sm: 0, md: 5 } }}>
-                    <img src={game.image.src} alt="" width="100%" height="auto" />
+                <StyledImage
+                        src={game.image.src}
+                        alt={game.title}
+                        width={100}
+                        height={100}
+                        quality={100}/>
                 </Grid>
             </Box>
             <Box component="div" sx={{ flex: 1, my: 5, color: 'light.main' }}>
